@@ -29,6 +29,7 @@ Vagrant.configure("2") do |vagrant_config|
             puppet.module_path = "modules"
             puppet.facter = {
                 "vhost" => $vhost,
+                "php_version" => $php_version,
                 "app_env" => $app_env,
                 "app_debug" => $app_debug,
                 "app_framework" => $app_framework,

@@ -14,12 +14,17 @@ $use_nfs = true
 $base_box = "precise32"
 $base_box_url = "http://files.vagrantup.com/precise32.box"
 
+# PHP version (allowed: php54, php55)
+$php_version = "php54"
+
 # App server variables
 $app_env = "dev"
 $app_debug = "true"
 
 # App framework (allowed: symfony, none)
 $app_framework = "symfony"
+
+# App document root
 $app_public_root = "web"
 
 # Use xDebug?

@@ -1,19 +1,22 @@
 # Default path
-Exec
-{
-  path => ["/usr/bin", "/bin", "/usr/sbin", "/sbin", "/usr/local/bin", "/usr/local/sbin"]
+exec {
+    path => ["/usr/bin", "/bin", "/usr/sbin", "/sbin", "/usr/local/bin", "/usr/local/sbin"]
 }
 
-exec
-{
-    'apt-get update':
+exec { 'apt-get update':
         command => '/usr/bin/apt-get update',
-        require => Exec['add php55 apt-repo']
+        require => Exec["add ${php_version} apt-repo"]
 }
 
 include bootstrap
 include tools
-include php55
+
+if $php_version == 'php55' {
+    include php55
+} else {
+    include php54
+}
+
 include php
 include apache
 include mysql
