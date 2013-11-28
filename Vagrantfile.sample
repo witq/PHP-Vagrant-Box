@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-#require "#{File.dirname(__FILE__)}/vagrant/console.rb"
-#require "#{File.dirname(__FILE__)}/vagrant/composer.rb"
+#require "#{File.dirname(__FILE__)}/commands/console.rb"
+#require "#{File.dirname(__FILE__)}/commands/composer.rb"
 
 Vagrant::Config.run do |config|
     config.vm.define :symfony do |sf_config|

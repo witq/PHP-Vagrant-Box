@@ -1,4 +1,4 @@
-class laravel_app
+class symfony_app
 {
 
 	package { 'git-core':
