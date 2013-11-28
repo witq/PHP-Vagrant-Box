@@ -33,6 +33,9 @@
     $base_box = "precise32"
     $base_box_url = "http://files.vagrantup.com/precise32.box"
 
+    # PHP version (allowed: php54, php55)
+    $php_version = "php55"
+
     # App server variables
     $app_env = "dev"
     $app_debug = "true"
