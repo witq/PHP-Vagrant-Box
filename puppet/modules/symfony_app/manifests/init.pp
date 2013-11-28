@@ -26,15 +26,6 @@ class laravel_app
 		require => Package['apache2']
 	}
 
-
-	exec { 'create laravel project':
-		command => "/bin/sh -c 'cd /var/www/ && composer --verbose create-project laravel/laravel . --prefer-dist'",
-		require => [Exec['global composer'], Package['git-core'], Exec['clean www directory']],
-		creates => "/var/www/composer.json",
-		timeout => 1800,
-		logoutput => true
-	}
-
 	exec { 'update packages':
         command => "/bin/sh -c 'cd /var/www/ && composer --verbose update'",
         require => [Package['git-core'], Package['php5'], Exec['global composer']],
@@ -51,8 +42,7 @@ class laravel_app
         timeout => 900,
 	}
 
-
-	file { '/var/www/app/storage':
+	file { '/var/www/app/cache':
 		mode => 0777
 	}
 }
