@@ -18,12 +18,12 @@ Vagrant.configure("2") do |vagrant_config|
 
         config.vm.synced_folder "../", "/var/www", id: "www", nfs: $use_nfs
 
+        config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
         config.vm.provider :virtualbox do |virtualbox|
             virtualbox.customize ["modifyvm", :id, "--name", $vhost]
             virtualbox.customize ["modifyvm", :id, "--memory", $memory_size]
         end
-
-        config.vm.provision "shell", inline: "echo \"Europe/Moskow\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
 
         config.vm.provision "puppet" do |puppet|
             puppet.manifests_path = "manifests"
