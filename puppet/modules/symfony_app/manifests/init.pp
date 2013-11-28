@@ -1,10 +1,5 @@
 class symfony_app
 {
-
-	package { 'git-core':
-    	ensure => present,
-    }
-
    	exec { 'install composer':
 	    command => 'curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin',
 	    require => Package['php5-cli'],
@@ -32,6 +27,27 @@ class symfony_app
         creates => "/var/www/vendor/autoload.php",
         timeout => 900,
 	}
+
+    exec {"db-drop":
+        require => Package["php5"],
+        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console doctrine:schema:drop --force'",
+    }
+
+    exec {"db-setup":
+        require => [Exec["db-drop"], Package["php5"]],
+        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console doctrine:schema:create'",
+    }
+
+    exec {"db-default-data":
+        require => [Exec["db-setup"], Package["php5"]],
+        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console doctrine:fixtures:load'",
+        onlyif => [ "test -d /var/www/src/*/*/DataFixtures" ],
+    }
+
+    exec {"clear-symfony-cache":
+        require => Package["php5-cli"],
+        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console cache:clear --env=dev && /usr/bin/php app/console cache:clear --env=prod'",
+    }
 
 	file { '/var/www/app/cache':
 		mode => 0777

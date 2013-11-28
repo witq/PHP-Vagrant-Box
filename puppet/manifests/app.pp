@@ -1,6 +1,3 @@
-# Enable XDebug ("0" | "1")
-$use_xdebug = "0"
-
 # Default path
 Exec
 {
@@ -15,7 +12,7 @@ exec
 }
 
 include bootstrap
-include other
+include tools
 include php55
 include php
 include apache
