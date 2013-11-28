@@ -32,7 +32,6 @@ class php
             ensure  => present,
             owner   => root, group => root,
             notify  => Service['apache2'],
-            #source => "/vagrant/vagrant/puppet/templates/php.ini",
             content => template('php/php.ini.erb'),
             require => [Package['php5'], Package['apache2']],
     }
