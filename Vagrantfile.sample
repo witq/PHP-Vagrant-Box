@@ -8,11 +8,14 @@ Vagrant::Config.run do |config|
     config.vm.define :symfony do |sf_config|
         sf_config.vm.box = "precise32"
         sf_config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-        #sf_config.vm.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+
+        sf_config.vm.network :hostonly, "33.33.33.10"
+        sf_config.vm.network :bridged
+
         sf_config.ssh.max_tries = 10
         sf_config.vm.forward_port 80, 8888
         sf_config.vm.forward_port 3306, 8889
-        sf_config.vm.forward_port 5432, 5433
+
         sf_config.vm.host_name = "symfony.dev"
         sf_config.vm.share_folder("www", "/var/www", "./", :mount_options => ["dmode=777","fmode=777"])
         sf_config.vm.provision :shell, :inline => "echo \"America/New_York\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
