@@ -1,12 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vagrant_settings = File.expand_path("Vagrantsettings", __FILE__)
+vagrant_settings = File.expand_path("../Vagrantsettings", __FILE__)
 load vagrant_settings
 
-vagrant_command_composer = File.expand_path("commands/composer.rb", __FILE__)
+vagrant_command_composer = File.expand_path("../commands/composer.rb", __FILE__)
 load vagrant_command_composer
-vagrant_command_console = File.expand_path("commands/console.rb", __FILE__)
+vagrant_command_console = File.expand_path("../commands/console.rb", __FILE__)
 load vagrant_command_console
 
 Vagrant.configure("2") do |vagrant_config|
