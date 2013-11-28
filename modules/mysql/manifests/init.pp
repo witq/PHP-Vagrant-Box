@@ -12,7 +12,7 @@ class mysql {
 
     exec { 'create-default-db':
             unless => '/usr/bin/mysql -uroot -proot database',
-            command => '/usr/bin/mysql -uroot -proot -e 'create database `database`;'',
+            command => '/usr/bin/mysql -uroot -proot -e "create database `database`;"',
             require => [Service['mysql']]
     }
 
