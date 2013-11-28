@@ -2,7 +2,7 @@
 	ServerAdmin developer@<%= @vhost %>
     ServerName <%= @vhost %>
 
-	DocumentRoot /var/www/web
+	DocumentRoot /var/www/<%= @app_public_root %>
 
 	<Directory />
 		Options FollowSymLinks

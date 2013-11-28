@@ -21,4 +21,6 @@ include phpmyadmin
 include beanstalkd
 include memcached
 
-include symfony_app
+if $app_framework == 'symfony' {
+    include symfony_app
+}

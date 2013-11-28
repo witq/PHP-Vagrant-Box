@@ -1,4 +1,4 @@
-# Vagrant/Puppet setup for Symfony 2 projects
+# Vagrant/Puppet setup for PHP (Symfony 2, other) projects
 
 ## Setup
 
@@ -36,6 +36,10 @@
     # App server variables
     $app_env = "dev"
     $app_debug = "true"
+
+    # App framework (allowed: symfony, none)
+    $app_framework = "symfony"
+    $app_public_root = "web"
 
     # Use xDebug?
     $use_xdebug = false

@@ -18,5 +18,9 @@ $base_box_url = "http://files.vagrantup.com/precise32.box"
 $app_env = "dev"
 $app_debug = "true"
 
+# App framework (allowed: symfony, none)
+$app_framework = "symfony"
+$app_public_root = "web"
+
 # Use xDebug?
 $use_xdebug = false
