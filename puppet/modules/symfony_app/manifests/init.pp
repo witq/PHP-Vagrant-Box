@@ -17,15 +17,6 @@ class symfony_app
 		unless => "[ -f /usr/local/bin/composer ]"
 	}
 
-	# Check to see if there's a composer.json and app directory before we delete everything
-	# We need to clean the directory in case a .DS_STORE file or other junk pops up before
-	# the composer create-project is called
-	exec { 'clean www directory':
-		command => "/bin/sh -c 'cd /var/www && find -mindepth 1 -delete'",
-		unless => [ "test -f /var/www/composer.json", "test -d /var/www/app" ],
-		require => Package['apache2']
-	}
-
 	exec { 'update packages':
         command => "/bin/sh -c 'cd /var/www/ && composer --verbose update'",
         require => [Package['git-core'], Package['php5'], Exec['global composer']],
