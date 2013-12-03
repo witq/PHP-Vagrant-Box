@@ -27,21 +27,21 @@ class symfony_app {
         timeout => 900,
 	}
 
-    exec { 'db-drop':
+    exec { 'db-update':
         require => Package['php5'],
-        command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:schema:drop --force"',
+        command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:schema:update --force"',
     }
 
-    exec { 'db-setup':
-        require => [Exec['db-drop'], Package['php5']],
-        command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:schema:create"',
-    }
+    # exec { 'db-setup':
+    #     require => [Exec['db-drop'], Package['php5']],
+    #     command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:schema:create"',
+    # }
 
-    exec { 'db-default-data':
-        require => [Exec['db-setup'], Package['php5']],
-        command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:fixtures:load"',
-        onlyif => [ 'test -d /var/www/src/*/*/DataFixtures' ],
-    }
+    # exec { 'db-default-data':
+    #     require => [Exec['db-setup'], Package['php5']],
+    #     command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console doctrine:fixtures:load"',
+    #     onlyif => [ 'test -d /var/www/src/*/*/DataFixtures' ],
+    # }
 
     exec { 'clear-symfony-cache':
         require => Package['php5-cli'],
