@@ -24,6 +24,9 @@ $app_debug = "true"
 # App framework (allowed: symfony, none)
 $app_framework = "symfony"
 
+# App database name
+$app_database_name = "app"
+
 # App document root
 $app_public_root = "web"
 

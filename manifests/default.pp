@@ -20,7 +20,6 @@ if $php_version == 'php55' {
 include php
 include apache
 include mysql
-include phpmyadmin
 include beanstalkd
 include memcached
 
