@@ -4,6 +4,14 @@
 vagrant_settings = File.expand_path("../Vagrantsettings", __FILE__)
 load vagrant_settings
 
+require_relative "commands/composer.rb"
+
+if $app_framework == 'symfony'
+    require_relative "commands/console.rb"
+elsif $app_framework == 'laravel'
+    require_relative "commands/artisan.rb"
+end
+
 Vagrant.configure("2") do |vagrant_config|
     vagrant_config.vm.define :appbox do |config|
         config.vm.box = $base_box
