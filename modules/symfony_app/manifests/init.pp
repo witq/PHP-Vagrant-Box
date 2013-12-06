@@ -27,14 +27,14 @@ class symfony_app {
         timeout => 900,
 	}
 
-    exec {"db-drop":
-        require => Package["php5"],
-        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console doctrine:schema:drop --force'",
-    }
-
     exec { 'clear-symfony-cache':
         require => Package['php5'],
         command => '/bin/sh -c "cd /var/www/ && /usr/bin/php app/console cache:clear --env=dev && /usr/bin/php app/console cache:clear --env=prod"',
+    }
+
+    exec {"db-drop":
+        require => [Exec['create-default-db'], Package['php5']],
+        command => "/bin/sh -c 'cd /var/www/ && /usr/bin/php app/console doctrine:schema:drop --force'",
     }
 
     exec { 'db-setup':

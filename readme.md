@@ -57,6 +57,8 @@ After performing the steps listed above, you will have the following environment
 - Your project directory will be mounted as a shared folder in this virtual machine
 - Your project will be accessible via a browser (go to `http://{$vhost}/` or `http://{$ip}/` or `http://localhost:8880/`)
 - Your MySQL will be accessible on port `8886`
+- Mysql user and password: `root`
+- Default database: `appbox`
 - You can now start customizing the new virtual machine. In most cases, the machine should correspond to the infrastructure your production server(s) provide.
 
 ## Being inspired by sources:

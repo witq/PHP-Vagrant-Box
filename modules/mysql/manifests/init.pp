@@ -17,13 +17,13 @@ class mysql {
     }
 
     exec { 'create-default-db':
-            unless => '/usr/bin/mysql -uroot -proot $app_database_name',
-            command => '/usr/bin/mysql -uroot -proot -e "create database `$app_database_name`;"',
+            unless => '/usr/bin/mysql -uroot -proot appbox',
+            command => '/usr/bin/mysql -uroot -proot -e "create database `appbox`;"',
             require => [Service['mysql']]
     }
 
     exec { 'grant-default-db':
-            command => '/usr/bin/mysql -uroot -proot -e "grant all on `$app_database_name`.* to `root@localhost`;"',
+            command => '/usr/bin/mysql -uroot -proot -e "grant all on `appbox`.* to `root@localhost`;"',
             require => [Service['mysql'], Exec['create-default-db']]
     }
 }

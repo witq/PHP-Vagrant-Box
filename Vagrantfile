@@ -35,7 +35,6 @@ Vagrant.configure("2") do |vagrant_config|
                 "app_env" => $app_env,
                 "app_debug" => $app_debug,
                 "app_framework" => $app_framework,
-                "app_database_name" => $app_database_name,
                 "app_public_root" => $app_public_root,
                 "use_xdebug" => $use_xdebug
             }
