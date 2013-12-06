@@ -19,7 +19,7 @@ class mysql {
     exec { 'create-default-db':
             unless => '/usr/bin/mysql -uroot -proot appbox',
             command => '/usr/bin/mysql -uroot -proot -e "create database appbox;"',
-            require => [Service['mysql']]
+            require => [Service['mysql'], Exec['set-mysql-password']]
     }
 
     exec { 'grant-default-db':
