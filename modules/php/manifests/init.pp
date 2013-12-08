@@ -5,7 +5,7 @@ class php {
             'php-pear',
             'php5-dev',
             'php-apc',
-            'php-intl',
+            'php5-intl',
             'php5-mcrypt',
             'php5-gd',
             'php5-curl',
