@@ -878,7 +878,7 @@ cli_server.color = On
 [Date]
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
-date.timezone = Europe/Moskow
+date.timezone = Europe/Moscow
 
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
@@ -1930,3 +1930,14 @@ ldap.max_links = -1
 ; Local Variables:
 ; tab-width: 4
 ; End:
+
+
+<% if @use_xdebug %>
+[xdebug]
+xdebug.remote_enable=1
+;xdebug.remote_host=localhost
+xdebug.remote_port=9001
+xdebug.remote_autostart=1
+xdebug.remote_connect_back=1
+xdebug.max_nesting_level=250
+<% end %>
