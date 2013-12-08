@@ -8,12 +8,16 @@
 
 -   Install vagrant-vbguest vagrant plugin [dotless-de/vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest)
 
+-   Install vagrant-exec vagrant plugin [p0deje/vagrant-exec](https://github.com/p0deje/vagrant-exec)
+
 -   Get a base box with puppet support [vagrantup.com docs](http://vagrantup.com/v1/docs/getting-started/boxes.html)
 
 -   Get a copy of this repository. You can do this either by integrating it as a git submodule or by just checking it out and copying the files.
     Prefarably, the contents of this repository should be placed in a directory `vagrant` inside your project's root dir.
 
--   Copy `vagrant/Vagrantsettings.dist` to `vagrant/Vagrantsettings` and modify `vagrant/Vagrantsettings` according to your needs.
+-   Copy `your_app_folder/vagrant/Vagrantfile.dist` to `your_app_folder/Vagrantfile` and modify `your_app_folder/Vagrantfile` according to your needs.
+
+-   Copy `your_app_folder/vagrant/Vagrantsettings.dist` to `your_app_folder/vagrant/Vagrantsettings` and modify `your_app_folder/vagrant/Vagrantsettings` according to your needs.
 
     Example:
     ```ruby

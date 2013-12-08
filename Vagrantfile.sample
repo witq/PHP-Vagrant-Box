@@ -1,8 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vagrant_settings = File.expand_path("../Vagrantsettings", __FILE__)
-load vagrant_settings
+require_relative "vagrant/Vagrantsettings"
 
 Vagrant.configure("2") do |vagrant_config|
     vagrant_config.vm.define :appbox do |config|
@@ -26,9 +25,9 @@ Vagrant.configure("2") do |vagrant_config|
         end
 
         config.vm.provision "puppet" do |puppet|
-            puppet.manifests_path = "manifests"
+            puppet.manifests_path = "vagrant/manifests"
             puppet.manifest_file = "default.pp"
-            puppet.module_path = "modules"
+            puppet.module_path = "vagrant/modules"
             puppet.facter = {
                 "vhost" => $vhost,
                 "php_version" => $php_version,
@@ -40,6 +39,10 @@ Vagrant.configure("2") do |vagrant_config|
             }
         end
 
-        config.vm.provision "shell", path: "scripts/enable_remote_mysql_access.sh"
+        config.vm.provision "shell", path: "vagrant/scripts/enable_remote_mysql_access.sh"
+
+        if Vagrant.has_plugin ? 'vagrant-exec'
+            config.exec.folder = '/var/www'
+        end
     end
 end
