@@ -4,7 +4,7 @@
 if (defined('STDIN')) {
     array_shift($argv);
 
-    if ($argv[0] == "update") {
+    if (isset($argv[0]) and $argv[0] == "update") {
 
         // Check vagrant plugins
         $plugins_required = array("vagrant-hostsupdater", "vagrant-vbguest", "vagrant-exec");
@@ -33,7 +33,7 @@ if (defined('STDIN')) {
         print shell_exec("vagrant reload --provision");
 
     } else {
-        if (file_exists(__DIR__ . 'artisan')) {
+        if (file_exists(__DIR__ . '/artisan')) {
             print shell_exec("vagrant exec php artisan " . implode(" ", $argv));
         } else {
             print shell_exec("vagrant exec php app/console " . implode(" ", $argv));
