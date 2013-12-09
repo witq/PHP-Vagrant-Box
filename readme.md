@@ -15,9 +15,11 @@
 -   Get a copy of this repository. You can do this either by integrating it as a git submodule or by just checking it out and copying the files.
     Prefarably, the contents of this repository should be placed in a directory `vagrant` inside your project's root dir.
 
--   Copy `your_app_folder/vagrant/Vagrantfile.dist` to `your_app_folder/Vagrantfile` and modify `your_app_folder/Vagrantfile` according to your needs.
+-   Copy `your_app_folder/vagrant/Vagrantfile.sample` to `your_app_folder/Vagrantfile` and modify `your_app_folder/Vagrantfile` according to your needs.
 
--   Copy `your_app_folder/vagrant/Vagrantsettings.dist` to `your_app_folder/vagrant/Vagrantsettings` and modify `your_app_folder/vagrant/Vagrantsettings` according to your needs.
+-   Copy `your_app_folder/vagrant/Vagrantsettings.sample` to `your_app_folder/vagrant/Vagrantsettings` and modify `your_app_folder/vagrant/Vagrantsettings` according to your needs.
+
+-   Copy `your_app_folder/vagrant/appbox.sample` to `your_app_folder/appbox`, change chmod to +x (use `chmod +x appbox`) and modify `your_app_folder/appbox` according to your needs. Use `php appbox` for call console commands in vagrant and run app update.
 
     Example:
     ```ruby
