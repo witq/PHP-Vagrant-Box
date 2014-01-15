@@ -4,6 +4,6 @@ class bootstrap {
     }
 
     if $virtual == "virtualbox" and $fqdn == '' {
-        $fqdn = "localhost"
+        $fqdn = $vhost
     }
 }
